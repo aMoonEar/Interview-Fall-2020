@@ -32,7 +32,13 @@ app.get('/range-launches/:start&:end', async (request: any, response: any) => {
   let outputArray = [];
   let years;
   for (years = parseInt(startYear); years < parseInt(endYear); years++) {
-    outputArray.push(await daily.getLaunchesByYear(years.toString()));
+
+    const result = await daily.getLaunchesByYear(years.toString());
+    for (let i=0; i<result.length; i++) {
+      outputArray.push(result[i]);
+    }
+
+    // outputArray.push(await daily.getLaunchesByYear(years.toString()));
   }
   response.json(outputArray);
 })

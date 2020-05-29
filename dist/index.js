@@ -36,12 +36,14 @@ app.get('/range-launches/:start&:end', (request, response) => __awaiter(void 0, 
     const startYear = dateAsMoment.year().toString();
     const dateAsEndMoment = moment_1.default(request.params.end, 'YYYY-MM-DD');
     const endYear = dateAsEndMoment.year().toString();
-    const numberOfYears = parseInt(endYear) - parseInt(startYear);
     let outputArray = [];
-    // let i;
     let years;
     for (years = parseInt(startYear); years < parseInt(endYear); years++) {
-        outputArray.push(yield daily.getLaunchesByYear(years.toString()));
+        const result = yield daily.getLaunchesByYear(years.toString());
+        for (let i = 0; i < result.length; i++) {
+            outputArray.push(result[i]);
+        }
+        // outputArray.push(await daily.getLaunchesByYear(years.toString()));
     }
     response.json(outputArray);
 }));
