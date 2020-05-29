@@ -46,7 +46,7 @@ export class Launches {
    * @param year
    */
   async requestLaunchesByYear(year: string): Promise<any[]> {
-    const res = await fetch(`${this.url}?launch_year=${year}`);
+    const res = await fetch(`${this.url}?launch_year=${year}&order=asc`);
     return res.json();
   }
 

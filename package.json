@@ -31,6 +31,7 @@
   "homepage": "https://github.com/AES-Outreach/Outreach-Interviews#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0"
   },
